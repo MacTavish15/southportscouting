@@ -91,7 +91,7 @@ if st.sidebar.button("Search", type="primary"):
     st.header("Table:")
     small_data["Score"] = treated_data["Score"] * 10
     small_data = small_data.sort_values("Score",ascending=False)
-
+    small_data['Similarity']=0
     for i in range(len(small_data)):
         small_data.at[i,'Similarity'] = distance.euclidean(data_player.iloc[0], small_data.iloc[i][cols_num])
     small_data = small_data.sort_values("Similarity",ascending=True).dropna()
